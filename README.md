@@ -1,17 +1,22 @@
 # bat-toolkit
 
-A simple toolkit for obfuscating and restoring Windows .bat files using prefix injection. Includes both an obfuscator and deobfuscator as a single-page web tool — no install, no upload, runs entirely in the browser.
+A simple toolkit for obfuscating and restoring Windows .bat files using multiple methods. Includes both an obfuscator and deobfuscator as a single-page web tool — no install, no upload, runs entirely in the browser.
+
+## Demo
+
+[https://bat-toolkit.netlify.app](https://bat-toolkit.netlify.app)
 
 ## Features
 
-- **Obfuscator** — injects an 8-byte prefix into any `.bat` file
-- **Deobfuscator** — detects and strips the prefix, restoring the original file
+- **4 obfuscation methods** — prefix injection, base64 encoding, junk line insertion, variable name scrambling
+- **Auto-detect deobfuscation** — automatically identifies and reverses the method used
 - No server, no upload — everything runs client-side in the browser
 - Drag & drop or click to browse
 
-## How it works
+## Methods
 
-The obfuscator prepends a fixed 8-byte payload to the beginning of your `.bat` file:
+### Method 1 — Prefix Injection
+Prepends a fixed 8-byte payload to the beginning of the file:
 
 | Field | Value |
 |---|---|
@@ -20,19 +25,20 @@ The obfuscator prepends a fixed 8-byte payload to the beginning of your `.bat` f
 | Prefix content | UTF-16LE BOM + `&cls\r\n` |
 | Prefix size | 8 bytes |
 
-The deobfuscator checks for this exact prefix and slices it off, producing a clean restored file.
+### Method 2 — Base64 Encoding
+Encodes the entire file as base64 and wraps it in a `certutil` self-decoding stub. The stub decodes and executes the original file at runtime.
 
-## Demo
+### Method 3 — Junk Line Insertion
+Scatters random `REM` comment lines and blank lines between every real line of the script. The original logic is preserved but buried in noise.
 
-[https://bat-toolkit.netlify.app](https://bat-toolkit.netlify.app)
+### Method 4 — Variable Name Scrambling
+Replaces all `%variable%` names with random tokens (e.g. `%_xA3k9f%`). A reverse map is embedded in the file header so the deobfuscator can restore all original names.
 
 ## Usage
 
 1. Open `index.html` in any modern browser
-2. Use the **Obfuscator** card to encode a `.bat` file — downloads as `filename_obfuscated.bat`
-3. Use the **Deobfuscator** card to restore an obfuscated file — downloads as `filename_deobfuscated.bat`
-
-> **Note:** The deobfuscator only works with files using the prefix injection method (`//4mY2xzDQo=`). Files from other obfuscators will not be recognized.
+2. **Obfuscate** — select a method, drop your `.bat` file, downloads as `filename_obfuscated.bat`
+3. **Deobfuscate** — select the matching method (or use auto-detect), drop the file, downloads as `filename_deobfuscated.bat`
 
 ## Compatibility
 
