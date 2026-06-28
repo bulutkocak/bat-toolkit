@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BAT Toolkit</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#f7f8fa;
+  --white:#ffffff;
+  --border:#e4e7ec;
+  --border-hover:#c9d0db;
+  --text:#111827;
+  --text-mid:#4b5563;
+  --text-muted:#9ca3af;
+  --blue:#2563eb;
+  --blue-light:#eff6ff;
+  --blue-border:#bfdbfe;
+  --green:#16a34a;
+  --green-light:#f0fdf4;
+  --green-border:#bbf7d0;
+  --red:#dc2626;
+  --red-light:#fef2f2;
+  --red-border:#fecaca;
+  --amber:#d97706;
+  --amber-light:#fffbeb;
+  --amber-border:#fde68a;
+  --radius-sm:6px;
+  --radius:10px;
+  --radius-lg:14px;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.05);
+  --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:0 4px 6px rgba(0,0,0,.06),0 2px 4px rgba(0,0,0,.04);
+}
+
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+
+header{
+  background:var(--white);
+  border-bottom:1px solid var(--border);
+  padding:0 40px;
+  height:60px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:sticky;
+  top:0;
+  z-index:10;
+  box-shadow:var(--shadow-sm);
+}
+
+.brand{display:flex;align-items:center;gap:10px}
+
+.brand-logo{
+  width:32px;height:32px;
+  background:var(--blue);
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+}
+
+.brand-logo svg{stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+.brand-name{font-size:15px;font-weight:600;color:var(--text);letter-spacing:-0.01em}
+.brand-name sup{font-size:9px;font-weight:500;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin-left:2px}
+
+.gh-btn{
+  display:flex;align-items:center;gap:7px;
+  font-size:13px;font-weight:500;color:var(--text-mid);
+  padding:7px 13px;
+  border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  background:var(--white);
+  cursor:pointer;text-decoration:none;
+  transition:all .15s;
+  box-shadow:var(--shadow-sm);
+}
+.gh-btn:hover{border-color:var(--border-hover);color:var(--text);background:var(--bg);text-decoration:none}
+.gh-btn svg{stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+main{
+  flex:1;
+  padding:48px 40px;
+  max-width:960px;
+  width:100%;
+  margin:0 auto;
+}
+
+.page-head{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:12px;font-weight:500;
+  color:var(--blue);
+  background:var(--blue-light);
+  border:1px solid var(--blue-border);
+  padding:4px 10px;
+  border-radius:20px;
+  margin-bottom:14px;
+  letter-spacing:0.02em;
+}
+
+.eyebrow svg{stroke:var(--blue);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+.page-head h1{
+  font-size:28px;font-weight:600;
+  color:var(--text);
+  letter-spacing:-0.02em;
+  margin-bottom:10px;
+  line-height:1.25;
+}
+
+.page-head p{
+  font-size:15px;color:var(--text-mid);
+  max-width:440px;margin:0 auto;line-height:1.65;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.card{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+
+.card-head{
+  padding:18px 20px 16px;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:12px;
+}
+
+.card-icon{
+  width:36px;height:36px;
+  border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+
+.card-icon.lock{background:#eff6ff}
+.card-icon.unlock{background:#f0fdf4}
+.card-icon.lock svg{stroke:#2563eb;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.card-icon.unlock svg{stroke:#16a34a;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+.card-meta{flex:1}
+.card-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px}
+.card-sub{font-size:12px;color:var(--text-muted)}
+
+.badge{
+  font-size:11px;font-weight:500;
+  padding:3px 9px;border-radius:20px;
+  letter-spacing:0.02em;
+}
+.badge-blue{background:var(--blue-light);color:var(--blue);border:1px solid var(--blue-border)}
+.badge-green{background:var(--green-light);color:var(--green);border:1px solid var(--green-border)}
+
+.card-body{padding:20px;flex:1;display:flex;flex-direction:column;gap:14px}
+
+.dropzone{
+  border:1.5px dashed var(--border-hover);
+  border-radius:var(--radius);
+  min-height:170px;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:10px;
+  cursor:pointer;
+  background:var(--bg);
+  transition:all .18s;
+  padding:20px;
+  text-align:center;
+}
+
+.dropzone:hover,.dropzone.over{
+  border-color:var(--blue);
+  background:var(--blue-light);
+}
+
+.dz-icon{
+  width:42px;height:42px;border-radius:10px;
+  background:var(--white);
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:var(--shadow-sm);
+  transition:all .18s;
+}
+
+.dropzone:hover .dz-icon,.dropzone.over .dz-icon{
+  border-color:var(--blue-border);
+  background:var(--blue-light);
+}
+
+.dz-icon svg{stroke:var(--text-muted);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:stroke .18s}
+.dropzone:hover .dz-icon svg,.dropzone.over .dz-icon svg{stroke:var(--blue)}
+
+.dz-label{font-size:13px;font-weight:500;color:var(--text-mid)}
+.dropzone:hover .dz-label,.dropzone.over .dz-label{color:var(--blue)}
+.dz-hint{font-size:11px;color:var(--text-muted)}
+
+input[type=file]{display:none}
+
+.status{
+  display:none;
+  align-items:flex-start;gap:9px;
+  padding:10px 13px;
+  border-radius:var(--radius-sm);
+  font-size:12px;
+  font-family:'JetBrains Mono',monospace;
+  line-height:1.5;
+}
+.status.show{display:flex}
+.status.ok{background:var(--green-light);border:1px solid var(--green-border);color:var(--green)}
+.status.err{background:var(--red-light);border:1px solid var(--red-border);color:var(--red)}
+.status-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.status.ok .status-dot{background:var(--green)}
+.status.err .status-dot{background:var(--red)}
+
+.warn{
+  padding:11px 13px;
+  border-radius:var(--radius-sm);
+  background:var(--amber-light);
+  border:1px solid var(--amber-border);
+  display:flex;gap:9px;align-items:flex-start;
+}
+.warn-icon{color:var(--amber);font-size:13px;flex-shrink:0;line-height:1.6}
+.warn-body{font-size:12px;color:#92400e;line-height:1.6}
+.warn-body strong{font-weight:600;color:#78350f;display:block;margin-bottom:1px}
+
+.info-tiles{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+
+.tile{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:10px 12px;
+}
+.tile-label{font-size:10px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:4px}
+.tile-val{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text);word-break:break-all}
+
+footer{
+  border-top:1px solid var(--border);
+  background:var(--white);
+  padding:16px 40px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.footer-l{font-size:12px;color:var(--text-muted)}
+.footer-l a{color:var(--text-mid);font-weight:500}
+.footer-r{font-size:12px;color:var(--text-muted);display:flex;align-items:center;gap:6px}
+.footer-r svg{stroke:var(--text-muted);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+code{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  padding:1px 5px;
+  border-radius:4px;
+  color:var(--text);
+}
+
+@media(max-width:680px){
+  .grid{grid-template-columns:1fr}
+  main{padding:28px 20px}
+  header{padding:0 20px}
+  footer{padding:14px 20px;flex-direction:column;gap:6px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="brand-logo">
+      <svg width="16" height="16" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+    </div>
+    <span class="brand-name">bat-toolkit<sup>by bulutkocak</sup></span>
+  </div>
+  <a class="gh-btn" href="https://github.com/bulutkocak/bat-toolkit" target="_blank">
+    <svg width="14" height="14" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+    View on GitHub
+  </a>
+</header>
+
+<main>
+  <div class="page-head">
+    <div class="eyebrow">
+      <svg width="12" height="12" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+      bat-toolkit
+    </div>
+    <h1>Obfuscate &amp; restore .bat files</h1>
+    <p>A simple browser-based toolkit for injecting and stripping obfuscation prefixes. No install, no upload — runs entirely client-side.</p>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-icon lock">
+          <svg width="17" height="17" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <div class="card-meta">
+          <div class="card-title">Obfuscator</div>
+          <div class="card-sub">Injects an 8-byte prefix into your .bat file</div>
+        </div>
+        <span class="badge badge-blue">Encode</span>
+      </div>
+      <div class="card-body">
+        <div class="dropzone" id="dz-obf" onclick="document.getElementById('fi-obf').click()">
+          <div class="dz-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          </div>
+          <span class="dz-label">Drop your .bat file or click to browse</span>
+          <span class="dz-hint">Outputs as filename_obfuscated.bat</span>
+        </div>
+        <input type="file" id="fi-obf" accept=".bat">
+        <div class="status" id="st-obf"><div class="status-dot"></div><span id="st-obf-msg"></span></div>
+        <div class="info-tiles">
+          <div class="tile">
+            <div class="tile-label">Payload (base64)</div>
+            <div class="tile-val">//4mY2xzDQo=</div>
+          </div>
+          <div class="tile">
+            <div class="tile-label">Decoded (hex)</div>
+            <div class="tile-val">FF FE 26 63 6C 73 0D 0A</div>
+          </div>
+          <div class="tile">
+            <div class="tile-label">Prefix content</div>
+            <div class="tile-val">BOM + &cls\r\n</div>
+          </div>
+          <div class="tile">
+            <div class="tile-label">Prefix size</div>
+            <div class="tile-val">8 bytes</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-icon unlock">
+          <svg width="17" height="17" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+        </div>
+        <div class="card-meta">
+          <div class="card-title">Deobfuscator</div>
+          <div class="card-sub">Strips the injected prefix and restores original</div>
+        </div>
+        <span class="badge badge-green">Decode</span>
+      </div>
+      <div class="card-body">
+        <div class="dropzone" id="dz-deobf" onclick="document.getElementById('fi-deobf').click()">
+          <div class="dz-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <span class="dz-label">Drop your obfuscated .bat file or click to browse</span>
+          <span class="dz-hint">Outputs as filename_deobfuscated.bat</span>
+        </div>
+        <input type="file" id="fi-deobf" accept=".bat">
+        <div class="status" id="st-deobf"><div class="status-dot"></div><span id="st-deobf-msg"></span></div>
+        <div class="warn">
+          <span class="warn-icon">⚠</span>
+          <div class="warn-body">
+            <strong>Compatibility notice</strong>
+            Only works with files using the prefix injection method (<code>//4mY2xzDQo=</code>). Files from other obfuscators will not be recognized.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-l">&copy; <span id="yr"></span> <a href="https://github.com/bulutkocak/bat-toolkit" target="_blank">bulutkocak/bat-toolkit</a> — MIT License</div>
+  <div class="footer-r">
+    <svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    No data uploaded — fully client-side
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+const PREFIX = Uint8Array.from(atob("//4mY2xzDQo="), c => c.charCodeAt(0));
+
+function setStatus(id, msg, type) {
+  const wrap = document.getElementById(id);
+  const txt = document.getElementById(id + '-msg');
+  wrap.className = 'status show ' + type;
+  txt.textContent = msg;
+}
+
+function startsWithPrefix(b) {
+  if (b.length < PREFIX.length) return false;
+  for (let i = 0; i < PREFIX.length; i++) if (b[i] !== PREFIX[i]) return false;
+  return true;
+}
+
+function dl(bytes, name) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([bytes], {type:'application/octet-stream'}));
+  a.download = name;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+function obfuscate(file) {
+  if (!file.name.toLowerCase().endsWith('.bat')) { setStatus('st-obf','Only .bat files are supported','err'); return; }
+  const r = new FileReader();
+  r.onload = e => {
+    const orig = new Uint8Array(e.target.result);
+    const out = new Uint8Array(PREFIX.length + orig.length);
+    out.set(PREFIX); out.set(orig, PREFIX.length);
+    const name = file.name.replace(/(\.\w+)$/, '_obfuscated$1');
+    dl(out, name);
+    setStatus('st-obf', `Done — saved "${name}" (${out.length} bytes)`, 'ok');
+  };
+  r.readAsArrayBuffer(file);
+}
+
+function deobfuscate(file) {
+  if (!file.name.toLowerCase().endsWith('.bat')) { setStatus('st-deobf','Only .bat files are supported','err'); return; }
+  const r = new FileReader();
+  r.onload = e => {
+    const orig = new Uint8Array(e.target.result);
+    if (!startsWithPrefix(orig)) { setStatus('st-deobf','No known prefix found — file may be clean or use a different obfuscator','err'); return; }
+    const out = orig.slice(PREFIX.length);
+    const name = file.name.replace(/(\.\w+)$/, '_deobfuscated$1');
+    dl(out, name);
+    setStatus('st-deobf', `Done — stripped 8 bytes, saved "${name}" (${out.length} bytes)`, 'ok');
+  };
+  r.readAsArrayBuffer(file);
+}
+
+function bind(dzId, fiId, fn) {
+  const dz = document.getElementById(dzId);
+  const fi = document.getElementById(fiId);
+  fi.addEventListener('change', () => { if (fi.files[0]) fn(fi.files[0]); });
+  dz.addEventListener('dragover', e => { e.preventDefault(); dz.classList.add('over'); });
+  dz.addEventListener('dragleave', () => dz.classList.remove('over'));
+  dz.addEventListener('drop', e => { e.preventDefault(); dz.classList.remove('over'); if (e.dataTransfer.files[0]) fn(e.dataTransfer.files[0]); });
+}
+
+bind('dz-obf', 'fi-obf', obfuscate);
+bind('dz-deobf', 'fi-deobf', deobfuscate);
+</script>
+
+</body>
+</html>
