@@ -22,6 +22,10 @@ The obfuscator prepends a fixed 8-byte payload to the beginning of your `.bat` f
 
 The deobfuscator checks for this exact prefix and slices it off, producing a clean restored file.
 
+## Demo
+
+[https://bat-toolkit.netlify.app](https://bat-toolkit.netlify.app)
+
 ## Usage
 
 1. Open `index.html` in any modern browser
