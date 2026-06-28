@@ -7,7 +7,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-
 :root{
   --bg:#f7f8fa;
   --white:#ffffff;
@@ -33,262 +32,73 @@
   --radius-lg:14px;
   --shadow-sm:0 1px 2px rgba(0,0,0,.05);
   --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
-  --shadow-md:0 4px 6px rgba(0,0,0,.06),0 2px 4px rgba(0,0,0,.04);
 }
-
-body{
-  font-family:'Inter',system-ui,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-}
-
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
 a{color:var(--blue);text-decoration:none}
 a:hover{text-decoration:underline}
-
-header{
-  background:var(--white);
-  border-bottom:1px solid var(--border);
-  padding:0 40px;
-  height:60px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  position:sticky;
-  top:0;
-  z-index:10;
-  box-shadow:var(--shadow-sm);
-}
-
+header{background:var(--white);border-bottom:1px solid var(--border);padding:0 40px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10;box-shadow:var(--shadow-sm)}
 .brand{display:flex;align-items:center;gap:10px}
-
-.brand-logo{
-  width:32px;height:32px;
-  background:var(--blue);
-  border-radius:8px;
-  display:flex;align-items:center;justify-content:center;
-}
-
+.brand-logo{width:32px;height:32px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center}
 .brand-logo svg{stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-
 .brand-name{font-size:15px;font-weight:600;color:var(--text);letter-spacing:-0.01em}
 .brand-name sup{font-size:9px;font-weight:500;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin-left:2px}
-
-.gh-btn{
-  display:flex;align-items:center;gap:7px;
-  font-size:13px;font-weight:500;color:var(--text-mid);
-  padding:7px 13px;
-  border:1px solid var(--border);
-  border-radius:var(--radius-sm);
-  background:var(--white);
-  cursor:pointer;text-decoration:none;
-  transition:all .15s;
-  box-shadow:var(--shadow-sm);
-}
+.gh-btn{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:500;color:var(--text-mid);padding:7px 13px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--white);cursor:pointer;text-decoration:none;transition:all .15s;box-shadow:var(--shadow-sm)}
 .gh-btn:hover{border-color:var(--border-hover);color:var(--text);background:var(--bg);text-decoration:none}
 .gh-btn svg{stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-
-main{
-  flex:1;
-  padding:48px 40px;
-  max-width:960px;
-  width:100%;
-  margin:0 auto;
-}
-
-.page-head{
-  text-align:center;
-  margin-bottom:40px;
-}
-
-.eyebrow{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:12px;font-weight:500;
-  color:var(--blue);
-  background:var(--blue-light);
-  border:1px solid var(--blue-border);
-  padding:4px 10px;
-  border-radius:20px;
-  margin-bottom:14px;
-  letter-spacing:0.02em;
-}
-
+main{flex:1;padding:48px 40px;max-width:1040px;width:100%;margin:0 auto}
+.page-head{text-align:center;margin-bottom:40px}
+.eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--blue);background:var(--blue-light);border:1px solid var(--blue-border);padding:4px 10px;border-radius:20px;margin-bottom:14px;letter-spacing:0.02em}
 .eyebrow svg{stroke:var(--blue);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-
-.page-head h1{
-  font-size:28px;font-weight:600;
-  color:var(--text);
-  letter-spacing:-0.02em;
-  margin-bottom:10px;
-  line-height:1.25;
-}
-
-.page-head p{
-  font-size:15px;color:var(--text-mid);
-  max-width:440px;margin:0 auto;line-height:1.65;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
-}
-
-.card{
-  background:var(--white);
-  border:1px solid var(--border);
-  border-radius:var(--radius-lg);
-  box-shadow:var(--shadow);
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-}
-
-.card-head{
-  padding:18px 20px 16px;
-  border-bottom:1px solid var(--border);
-  display:flex;align-items:center;gap:12px;
-}
-
-.card-icon{
-  width:36px;height:36px;
-  border-radius:9px;
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;
-}
-
-.card-icon.lock{background:#eff6ff}
-.card-icon.unlock{background:#f0fdf4}
-.card-icon.lock svg{stroke:#2563eb;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.card-icon.unlock svg{stroke:#16a34a;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-
+.page-head h1{font-size:28px;font-weight:600;color:var(--text);letter-spacing:-0.02em;margin-bottom:10px;line-height:1.25}
+.page-head p{font-size:15px;color:var(--text-mid);max-width:460px;margin:0 auto;line-height:1.65}
+.section-label{font-size:11px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px}
+.card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+.card-head{padding:16px 18px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:11px}
+.card-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.card-icon.blue{background:#eff6ff}
+.card-icon.blue svg{stroke:#2563eb;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.card-icon.green{background:#f0fdf4}
+.card-icon.green svg{stroke:#16a34a;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .card-meta{flex:1}
-.card-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px}
-.card-sub{font-size:12px;color:var(--text-muted)}
-
-.badge{
-  font-size:11px;font-weight:500;
-  padding:3px 9px;border-radius:20px;
-  letter-spacing:0.02em;
-}
+.card-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px}
+.card-sub{font-size:11px;color:var(--text-muted)}
+.badge{font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px;letter-spacing:0.02em;white-space:nowrap}
 .badge-blue{background:var(--blue-light);color:var(--blue);border:1px solid var(--blue-border)}
 .badge-green{background:var(--green-light);color:var(--green);border:1px solid var(--green-border)}
-
-.card-body{padding:20px;flex:1;display:flex;flex-direction:column;gap:14px}
-
-.dropzone{
-  border:1.5px dashed var(--border-hover);
-  border-radius:var(--radius);
-  min-height:170px;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  gap:10px;
-  cursor:pointer;
-  background:var(--bg);
-  transition:all .18s;
-  padding:20px;
-  text-align:center;
-}
-
-.dropzone:hover,.dropzone.over{
-  border-color:var(--blue);
-  background:var(--blue-light);
-}
-
-.dz-icon{
-  width:42px;height:42px;border-radius:10px;
-  background:var(--white);
-  border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:var(--shadow-sm);
-  transition:all .18s;
-}
-
-.dropzone:hover .dz-icon,.dropzone.over .dz-icon{
-  border-color:var(--blue-border);
-  background:var(--blue-light);
-}
-
+.card-body{padding:16px;flex:1;display:flex;flex-direction:column;gap:12px}
+.method-select{width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:12px;font-family:'Inter',sans-serif;color:var(--text);background:var(--white);cursor:pointer;outline:none;transition:border-color .15s}
+.method-select:focus{border-color:var(--blue)}
+.method-desc{font-size:11px;color:var(--text-muted);padding:7px 10px;background:var(--bg);border-radius:var(--radius-sm);border:1px solid var(--border);font-family:'JetBrains Mono',monospace;line-height:1.5;min-height:38px}
+.dropzone{border:1.5px dashed var(--border-hover);border-radius:var(--radius);min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;cursor:pointer;background:var(--bg);transition:all .18s;padding:20px;text-align:center}
+.dropzone:hover,.dropzone.over{border-color:var(--blue);background:var(--blue-light)}
+.dz-icon{width:38px;height:38px;border-radius:9px;background:var(--white);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-sm);transition:all .18s}
+.dropzone:hover .dz-icon,.dropzone.over .dz-icon{border-color:var(--blue-border);background:var(--blue-light)}
 .dz-icon svg{stroke:var(--text-muted);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:stroke .18s}
 .dropzone:hover .dz-icon svg,.dropzone.over .dz-icon svg{stroke:var(--blue)}
-
-.dz-label{font-size:13px;font-weight:500;color:var(--text-mid)}
+.dz-label{font-size:12px;font-weight:500;color:var(--text-mid)}
 .dropzone:hover .dz-label,.dropzone.over .dz-label{color:var(--blue)}
 .dz-hint{font-size:11px;color:var(--text-muted)}
-
 input[type=file]{display:none}
-
-.status{
-  display:none;
-  align-items:flex-start;gap:9px;
-  padding:10px 13px;
-  border-radius:var(--radius-sm);
-  font-size:12px;
-  font-family:'JetBrains Mono',monospace;
-  line-height:1.5;
-}
+.status{display:none;align-items:flex-start;gap:8px;padding:9px 12px;border-radius:var(--radius-sm);font-size:11px;font-family:'JetBrains Mono',monospace;line-height:1.5}
 .status.show{display:flex}
 .status.ok{background:var(--green-light);border:1px solid var(--green-border);color:var(--green)}
 .status.err{background:var(--red-light);border:1px solid var(--red-border);color:var(--red)}
-.status-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.status-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:3px}
 .status.ok .status-dot{background:var(--green)}
 .status.err .status-dot{background:var(--red)}
-
-.warn{
-  padding:11px 13px;
-  border-radius:var(--radius-sm);
-  background:var(--amber-light);
-  border:1px solid var(--amber-border);
-  display:flex;gap:9px;align-items:flex-start;
-}
-.warn-icon{color:var(--amber);font-size:13px;flex-shrink:0;line-height:1.6}
-.warn-body{font-size:12px;color:#92400e;line-height:1.6}
+.warn{padding:10px 12px;border-radius:var(--radius-sm);background:var(--amber-light);border:1px solid var(--amber-border);display:flex;gap:8px;align-items:flex-start}
+.warn-icon{color:var(--amber);font-size:12px;flex-shrink:0;line-height:1.6}
+.warn-body{font-size:11px;color:#92400e;line-height:1.6}
 .warn-body strong{font-weight:600;color:#78350f;display:block;margin-bottom:1px}
-
-.info-tiles{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-}
-
-.tile{
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:var(--radius-sm);
-  padding:10px 12px;
-}
-.tile-label{font-size:10px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:4px}
-.tile-val{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text);word-break:break-all}
-
-footer{
-  border-top:1px solid var(--border);
-  background:var(--white);
-  padding:16px 40px;
-  display:flex;align-items:center;justify-content:space-between;
-}
+footer{border-top:1px solid var(--border);background:var(--white);padding:16px 40px;display:flex;align-items:center;justify-content:space-between}
 .footer-l{font-size:12px;color:var(--text-muted)}
 .footer-l a{color:var(--text-mid);font-weight:500}
 .footer-r{font-size:12px;color:var(--text-muted);display:flex;align-items:center;gap:6px}
 .footer-r svg{stroke:var(--text-muted);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-
-code{
-  font-family:'JetBrains Mono',monospace;
-  font-size:11px;
-  background:var(--bg);
-  border:1px solid var(--border);
-  padding:1px 5px;
-  border-radius:4px;
-  color:var(--text);
-}
-
-@media(max-width:680px){
-  .grid{grid-template-columns:1fr}
-  main{padding:28px 20px}
-  header{padding:0 20px}
-  footer{padding:14px 20px;flex-direction:column;gap:6px;text-align:center}
-}
+code{font-family:'JetBrains Mono',monospace;font-size:11px;background:var(--bg);border:1px solid var(--border);padding:1px 5px;border-radius:4px;color:var(--text)}
+@media(max-width:700px){.grid{grid-template-columns:1fr}main{padding:28px 20px}header{padding:0 20px}footer{padding:14px 20px;flex-direction:column;gap:6px;text-align:center}}
 </style>
 </head>
 <body>
@@ -313,68 +123,85 @@ code{
       bat-toolkit
     </div>
     <h1>Obfuscate &amp; restore .bat files</h1>
-    <p>A simple browser-based toolkit for injecting and stripping obfuscation prefixes. No install, no upload — runs entirely client-side.</p>
+    <p>Four obfuscation methods, all fully reversible. No install, no upload — runs entirely client-side.</p>
   </div>
 
+  <div class="section-label">Obfuscator</div>
   <div class="grid">
-
     <div class="card">
       <div class="card-head">
-        <div class="card-icon lock">
-          <svg width="17" height="17" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <div class="card-icon blue">
+          <svg width="16" height="16" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         </div>
         <div class="card-meta">
-          <div class="card-title">Obfuscator</div>
-          <div class="card-sub">Injects an 8-byte prefix into your .bat file</div>
+          <div class="card-title">Select method &amp; encode</div>
+          <div class="card-sub">Pick a method, then drop your .bat file</div>
         </div>
         <span class="badge badge-blue">Encode</span>
       </div>
       <div class="card-body">
+        <select class="method-select" id="obf-method" onchange="updateObfDesc()">
+          <option value="prefix">Method 1 — Prefix injection</option>
+          <option value="base64">Method 2 — Base64 encoding</option>
+          <option value="junk">Method 3 — Junk line insertion</option>
+          <option value="varscramble">Method 4 — Variable name scrambling</option>
+        </select>
+        <div class="method-desc" id="obf-desc">Prepends an 8-byte payload (BOM + &cls) before the file content.</div>
         <div class="dropzone" id="dz-obf" onclick="document.getElementById('fi-obf').click()">
           <div class="dz-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <svg width="17" height="17" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
           </div>
           <span class="dz-label">Drop your .bat file or click to browse</span>
           <span class="dz-hint">Outputs as filename_obfuscated.bat</span>
         </div>
         <input type="file" id="fi-obf" accept=".bat">
         <div class="status" id="st-obf"><div class="status-dot"></div><span id="st-obf-msg"></span></div>
-        <div class="info-tiles">
-          <div class="tile">
-            <div class="tile-label">Payload (base64)</div>
-            <div class="tile-val">//4mY2xzDQo=</div>
-          </div>
-          <div class="tile">
-            <div class="tile-label">Decoded (hex)</div>
-            <div class="tile-val">FF FE 26 63 6C 73 0D 0A</div>
-          </div>
-          <div class="tile">
-            <div class="tile-label">Prefix content</div>
-            <div class="tile-val">BOM + &cls\r\n</div>
-          </div>
-          <div class="tile">
-            <div class="tile-label">Prefix size</div>
-            <div class="tile-val">8 bytes</div>
-          </div>
-        </div>
       </div>
     </div>
 
     <div class="card">
       <div class="card-head">
-        <div class="card-icon unlock">
-          <svg width="17" height="17" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+        <div class="card-icon blue">
+          <svg width="16" height="16" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
         </div>
         <div class="card-meta">
-          <div class="card-title">Deobfuscator</div>
-          <div class="card-sub">Strips the injected prefix and restores original</div>
+          <div class="card-title">Method reference</div>
+          <div class="card-sub">How each obfuscation works</div>
+        </div>
+      </div>
+      <div class="card-body" style="gap:8px">
+        <div class="method-desc" style="min-height:auto"><strong style="font-size:10px;color:var(--text-mid)">METHOD 1 — PREFIX INJECTION</strong><br>Prepends FF FE 26 63 6C 73 0D 0A (BOM + &cls\r\n) to the raw file bytes.</div>
+        <div class="method-desc" style="min-height:auto"><strong style="font-size:10px;color:var(--text-mid)">METHOD 2 — BASE64</strong><br>Encodes the entire file as base64 and wraps it in a certutil self-decoding stub.</div>
+        <div class="method-desc" style="min-height:auto"><strong style="font-size:10px;color:var(--text-mid)">METHOD 3 — JUNK LINES</strong><br>Inserts random REM comments and blank lines between every real line of the script.</div>
+        <div class="method-desc" style="min-height:auto"><strong style="font-size:10px;color:var(--text-mid)">METHOD 4 — VAR SCRAMBLE</strong><br>Replaces all %variable% names with random tokens. Map is embedded in the file header.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Deobfuscator</div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-head">
+        <div class="card-icon green">
+          <svg width="16" height="16" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+        </div>
+        <div class="card-meta">
+          <div class="card-title">Select method &amp; decode</div>
+          <div class="card-sub">Must match the method used to obfuscate</div>
         </div>
         <span class="badge badge-green">Decode</span>
       </div>
       <div class="card-body">
+        <select class="method-select" id="deobf-method" onchange="updateDeobfDesc()">
+          <option value="prefix">Method 1 — Prefix injection</option>
+          <option value="base64">Method 2 — Base64 encoding</option>
+          <option value="junk">Method 3 — Junk line insertion</option>
+          <option value="varscramble">Method 4 — Variable name scrambling</option>
+        </select>
+        <div class="method-desc" id="deobf-desc">Detects and strips the 8-byte prefix, restoring original file bytes.</div>
         <div class="dropzone" id="dz-deobf" onclick="document.getElementById('fi-deobf').click()">
           <div class="dz-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <svg width="17" height="17" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           </div>
           <span class="dz-label">Drop your obfuscated .bat file or click to browse</span>
           <span class="dz-hint">Outputs as filename_deobfuscated.bat</span>
@@ -385,13 +212,38 @@ code{
           <span class="warn-icon">⚠</span>
           <div class="warn-body">
             <strong>Compatibility notice</strong>
-            Only works with files using the prefix injection method (<code>//4mY2xzDQo=</code>). Files from other obfuscators will not be recognized.
+            The selected decode method must match the one used to obfuscate the file. Mismatched methods will fail or produce corrupted output.
           </div>
         </div>
       </div>
     </div>
 
+    <div class="card">
+      <div class="card-head">
+        <div class="card-icon green">
+          <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="card-meta">
+          <div class="card-title">Auto-detect</div>
+          <div class="card-sub">Let the tool figure out the method</div>
+        </div>
+        <span class="badge badge-green">Smart</span>
+      </div>
+      <div class="card-body">
+        <div class="method-desc" style="min-height:auto">Drop any obfuscated file and the toolkit will try all four methods in order and apply whichever one matches.</div>
+        <div class="dropzone" id="dz-auto" onclick="document.getElementById('fi-auto').click()">
+          <div class="dz-icon">
+            <svg width="17" height="17" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <span class="dz-label">Drop any obfuscated .bat file</span>
+          <span class="dz-hint">Auto-detects &amp; restores</span>
+        </div>
+        <input type="file" id="fi-auto" accept=".bat">
+        <div class="status" id="st-auto"><div class="status-dot"></div><span id="st-auto-msg"></span></div>
+      </div>
+    </div>
   </div>
+
 </main>
 
 <footer>
@@ -405,19 +257,31 @@ code{
 <script>
 document.getElementById('yr').textContent = new Date().getFullYear();
 
-const PREFIX = Uint8Array.from(atob("//4mY2xzDQo="), c => c.charCodeAt(0));
+const OBF_DESCS = {
+  prefix:     'Prepends an 8-byte payload (BOM + &cls) before the file content.',
+  base64:     'Encodes the entire file as base64 and wraps it in a certutil self-decoding stub.',
+  junk:       'Inserts random REM comments and blank lines between every real line.',
+  varscramble:'Replaces all %variable% names with random tokens. Map embedded in file header.'
+};
+const DEOBF_DESCS = {
+  prefix:     'Detects and strips the 8-byte prefix, restoring original file bytes.',
+  base64:     'Detects the certutil stub, extracts and decodes the base64 payload.',
+  junk:       'Removes all REM comment lines and collapses blank lines, leaving original lines.',
+  varscramble:'Reads the embedded map from the file header and reverses all variable renames.'
+};
+
+function updateObfDesc() {
+  document.getElementById('obf-desc').textContent = OBF_DESCS[document.getElementById('obf-method').value];
+}
+function updateDeobfDesc() {
+  document.getElementById('deobf-desc').textContent = DEOBF_DESCS[document.getElementById('deobf-method').value];
+}
 
 function setStatus(id, msg, type) {
   const wrap = document.getElementById(id);
-  const txt = document.getElementById(id + '-msg');
+  const txt  = document.getElementById(id + '-msg');
   wrap.className = 'status show ' + type;
   txt.textContent = msg;
-}
-
-function startsWithPrefix(b) {
-  if (b.length < PREFIX.length) return false;
-  for (let i = 0; i < PREFIX.length; i++) if (b[i] !== PREFIX[i]) return false;
-  return true;
 }
 
 function dl(bytes, name) {
@@ -429,32 +293,248 @@ function dl(bytes, name) {
   document.body.removeChild(a);
 }
 
-function obfuscate(file) {
-  if (!file.name.toLowerCase().endsWith('.bat')) { setStatus('st-obf','Only .bat files are supported','err'); return; }
+function dlText(text, name) {
+  dl(new TextEncoder().encode(text), name);
+}
+
+function randStr(len) {
+  const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let s = '';
+  for (let i = 0; i < len; i++) s += chars[Math.floor(Math.random() * chars.length)];
+  return s;
+}
+
+function randRem() {
+  const words = ['alpha','bravo','charlie','delta','echo','foxtrot','init','load','check','run','pass','flag','tick','loop','done','skip'];
+  const count = 2 + Math.floor(Math.random() * 4);
+  let w = [];
+  for (let i = 0; i < count; i++) w.push(words[Math.floor(Math.random() * words.length)]);
+  return 'REM ' + w.join(' ');
+}
+
+const PREFIX_BYTES = Uint8Array.from(atob('//4mY2xzDQo='), c => c.charCodeAt(0));
+
+function obfPrefix(bytes) {
+  const out = new Uint8Array(PREFIX_BYTES.length + bytes.length);
+  out.set(PREFIX_BYTES);
+  out.set(bytes, PREFIX_BYTES.length);
+  return { bytes: out };
+}
+
+function obfBase64(bytes) {
+  let bin = '';
+  for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+  const b64 = btoa(bin);
+  const lines = b64.match(/.{1,64}/g) || [];
+  const stub = [
+    '@echo off',
+    'setlocal',
+    'set "_tmp=%temp%\\_bat64_%random%.bat"',
+    'set "_enc=%temp%\\_bat64_%random%.b64"',
+    '(',
+    ...lines.map(l => 'echo ' + l),
+    ')>"%_enc%"',
+    'certutil -decode "%_enc%" "%_tmp%" >nul 2>&1',
+    'del "%_enc%"',
+    'call "%_tmp%"',
+    'del "%_tmp%"',
+    'endlocal'
+  ].join('\r\n');
+  return { text: stub };
+}
+
+function obfJunk(text) {
+  const lines = text.replace(/\r\n/g, '\n').split('\n');
+  const out = [];
+  for (const line of lines) {
+    if (Math.random() > 0.3) out.push(randRem());
+    if (Math.random() > 0.5) out.push('');
+    out.push(line);
+    if (Math.random() > 0.6) out.push('');
+  }
+  return { text: out.join('\r\n') };
+}
+
+function obfVarScramble(text) {
+  const vars = [];
+  const regex = /%([^%\s]+)%/g;
+  let m;
+  while ((m = regex.exec(text)) !== null) {
+    const v = m[1].toLowerCase();
+    if (!vars.includes(v) && !['~dp0','~nx0','~f0','~n0','errorlevel','random','date','time','cd','path','temp','tmp','comspec','windir','systemroot','username','computername'].includes(v)) {
+      vars.push(v);
+    }
+  }
+  const map = {};
+  for (const v of vars) map[v] = '_x' + randStr(6);
+  let result = text;
+  for (const [orig, scrambled] of Object.entries(map)) {
+    result = result.replace(new RegExp('%' + orig.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + '%', 'gi'), '%' + scrambled + '%');
+    result = result.replace(new RegExp('set\\s+"?' + orig.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + '=', 'gi'), (match) => match.replace(new RegExp(orig,'gi'), scrambled));
+  }
+  const header = [
+    'REM ::BAT-TOOLKIT::VARMAP::BEGIN',
+    ...Object.entries(map).map(([o,s]) => 'REM ::MAP::' + o + '::' + s),
+    'REM ::BAT-TOOLKIT::VARMAP::END',
+    ''
+  ].join('\r\n');
+  return { text: header + result };
+}
+
+function deobfPrefix(bytes) {
+  for (let i = 0; i < PREFIX_BYTES.length; i++) {
+    if (bytes[i] !== PREFIX_BYTES[i]) return null;
+  }
+  return { bytes: bytes.slice(PREFIX_BYTES.length) };
+}
+
+function deobfBase64(text) {
+  const lines = text.replace(/\r\n/g,'\n').split('\n');
+  const b64Lines = [];
+  let inBlock = false;
+  for (const line of lines) {
+    if (line.trim().startsWith('echo ') && !inBlock) inBlock = true;
+    if (inBlock) {
+      if (line.trim().startsWith('echo ')) {
+        b64Lines.push(line.trim().slice(5));
+      } else if (line.trim().startsWith(')>')) {
+        break;
+      }
+    }
+  }
+  if (!b64Lines.length) return null;
+  try {
+    const b64 = b64Lines.join('');
+    const bin = atob(b64);
+    const bytes = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return { bytes };
+  } catch(e) { return null; }
+}
+
+function deobfJunk(text) {
+  const lines = text.replace(/\r\n/g,'\n').split('\n');
+  const out = lines.filter(l => !l.trim().startsWith('REM ') || l.trim() === 'REM');
+  let cleaned = out.join('\r\n').replace(/(\r\n){3,}/g, '\r\n\r\n');
+  return { text: cleaned };
+}
+
+function deobfVarScramble(text) {
+  const lines = text.replace(/\r\n/g,'\n').split('\n');
+  const map = {};
+  let inMap = false;
+  const bodyLines = [];
+  for (const line of lines) {
+    if (line.includes('::BAT-TOOLKIT::VARMAP::BEGIN')) { inMap = true; continue; }
+    if (line.includes('::BAT-TOOLKIT::VARMAP::END')) { inMap = false; continue; }
+    if (inMap) {
+      const mp = line.match(/::MAP::(.+?)::(.+)/);
+      if (mp) map[mp[2]] = mp[1];
+      continue;
+    }
+    bodyLines.push(line);
+  }
+  if (!Object.keys(map).length) return null;
+  let result = bodyLines.join('\n');
+  for (const [scrambled, orig] of Object.entries(map)) {
+    result = result.replace(new RegExp('%' + scrambled.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + '%', 'gi'), '%' + orig + '%');
+    result = result.replace(new RegExp('set\\s+"?' + scrambled.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + '=', 'gi'), (match) => match.replace(new RegExp(scrambled,'gi'), orig));
+  }
+  return { text: result };
+}
+
+function readAsBytes(file, cb) {
   const r = new FileReader();
-  r.onload = e => {
-    const orig = new Uint8Array(e.target.result);
-    const out = new Uint8Array(PREFIX.length + orig.length);
-    out.set(PREFIX); out.set(orig, PREFIX.length);
-    const name = file.name.replace(/(\.\w+)$/, '_obfuscated$1');
-    dl(out, name);
-    setStatus('st-obf', `Done — saved "${name}" (${out.length} bytes)`, 'ok');
-  };
+  r.onload = e => cb(new Uint8Array(e.target.result));
   r.readAsArrayBuffer(file);
 }
 
-function deobfuscate(file) {
-  if (!file.name.toLowerCase().endsWith('.bat')) { setStatus('st-deobf','Only .bat files are supported','err'); return; }
+function readAsText(file, cb) {
   const r = new FileReader();
-  r.onload = e => {
-    const orig = new Uint8Array(e.target.result);
-    if (!startsWithPrefix(orig)) { setStatus('st-deobf','No known prefix found — file may be clean or use a different obfuscator','err'); return; }
-    const out = orig.slice(PREFIX.length);
-    const name = file.name.replace(/(\.\w+)$/, '_deobfuscated$1');
-    dl(out, name);
-    setStatus('st-deobf', `Done — stripped 8 bytes, saved "${name}" (${out.length} bytes)`, 'ok');
-  };
-  r.readAsArrayBuffer(file);
+  r.onload = e => cb(e.target.result);
+  r.readAsText(file);
+}
+
+function runObfuscate(file) {
+  if (!file.name.toLowerCase().endsWith('.bat')) { setStatus('st-obf','Only .bat files are supported','err'); return; }
+  const method = document.getElementById('obf-method').value;
+  const outName = file.name.replace(/(\.\w+)$/, '_obfuscated$1');
+  if (method === 'prefix') {
+    readAsBytes(file, bytes => {
+      const res = obfPrefix(bytes);
+      dl(res.bytes, outName);
+      setStatus('st-obf', `Done — method 1 applied, saved "${outName}" (${res.bytes.length} bytes)`, 'ok');
+    });
+  } else if (method === 'base64') {
+    readAsBytes(file, bytes => {
+      const res = obfBase64(bytes);
+      dlText(res.text, outName);
+      setStatus('st-obf', `Done — method 2 applied, saved "${outName}"`, 'ok');
+    });
+  } else if (method === 'junk') {
+    readAsText(file, text => {
+      const res = obfJunk(text);
+      dlText(res.text, outName);
+      setStatus('st-obf', `Done — method 3 applied, saved "${outName}"`, 'ok');
+    });
+  } else if (method === 'varscramble') {
+    readAsText(file, text => {
+      const res = obfVarScramble(text);
+      dlText(res.text, outName);
+      setStatus('st-obf', `Done — method 4 applied, saved "${outName}"`, 'ok');
+    });
+  }
+}
+
+function runDeobfuscate(file) {
+  if (!file.name.toLowerCase().endsWith('.bat')) { setStatus('st-deobf','Only .bat files are supported','err'); return; }
+  const method = document.getElementById('deobf-method').value;
+  const outName = file.name.replace(/(\.\w+)$/, '_deobfuscated$1');
+  if (method === 'prefix') {
+    readAsBytes(file, bytes => {
+      const res = deobfPrefix(bytes);
+      if (!res) { setStatus('st-deobf','No prefix found — file may not use method 1','err'); return; }
+      dl(res.bytes, outName);
+      setStatus('st-deobf', `Done — prefix stripped, saved "${outName}" (${res.bytes.length} bytes)`, 'ok');
+    });
+  } else if (method === 'base64') {
+    readAsText(file, text => {
+      const res = deobfBase64(text);
+      if (!res) { setStatus('st-deobf','Could not find base64 stub — file may not use method 2','err'); return; }
+      dl(res.bytes, outName);
+      setStatus('st-deobf', `Done — decoded, saved "${outName}" (${res.bytes.length} bytes)`, 'ok');
+    });
+  } else if (method === 'junk') {
+    readAsText(file, text => {
+      const res = deobfJunk(text);
+      dlText(res.text, outName);
+      setStatus('st-deobf', `Done — junk lines removed, saved "${outName}"`, 'ok');
+    });
+  } else if (method === 'varscramble') {
+    readAsText(file, text => {
+      const res = deobfVarScramble(text);
+      if (!res) { setStatus('st-deobf','No variable map found — file may not use method 4','err'); return; }
+      dlText(res.text, outName);
+      setStatus('st-deobf', `Done — variables restored, saved "${outName}"`, 'ok');
+    });
+  }
+}
+
+function runAuto(file) {
+  if (!file.name.toLowerCase().endsWith('.bat')) { setStatus('st-auto','Only .bat files are supported','err'); return; }
+  const outName = file.name.replace(/(\.\w+)$/, '_deobfuscated$1');
+  readAsBytes(file, bytes => {
+    const r1 = deobfPrefix(bytes);
+    if (r1) { dl(r1.bytes, outName); setStatus('st-auto', `Detected method 1 (prefix injection) — saved "${outName}"`, 'ok'); return; }
+    const text = new TextDecoder().decode(bytes);
+    const r2 = deobfBase64(text);
+    if (r2) { dl(r2.bytes, outName); setStatus('st-auto', `Detected method 2 (base64) — saved "${outName}"`, 'ok'); return; }
+    const r4 = deobfVarScramble(text);
+    if (r4) { dlText(r4.text, outName); setStatus('st-auto', `Detected method 4 (var scramble) — saved "${outName}"`, 'ok'); return; }
+    const r3 = deobfJunk(text);
+    dlText(r3.text, outName);
+    setStatus('st-auto', `Applied method 3 (junk removal) — saved "${outName}"`, 'ok');
+  });
 }
 
 function bind(dzId, fiId, fn) {
@@ -466,8 +546,9 @@ function bind(dzId, fiId, fn) {
   dz.addEventListener('drop', e => { e.preventDefault(); dz.classList.remove('over'); if (e.dataTransfer.files[0]) fn(e.dataTransfer.files[0]); });
 }
 
-bind('dz-obf', 'fi-obf', obfuscate);
-bind('dz-deobf', 'fi-deobf', deobfuscate);
+bind('dz-obf',   'fi-obf',   runObfuscate);
+bind('dz-deobf', 'fi-deobf', runDeobfuscate);
+bind('dz-auto',  'fi-auto',  runAuto);
 </script>
 
 </body>
